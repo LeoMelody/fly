@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -741,22 +741,25 @@ module.exports = Fly;
 
 /***/ }),
 /* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-//微信小程序适配器
+/*
+ * @Author: leo 
+ * @Date: 2018-11-01 16:16:17 
+ * @Last Modified by: leo
+ * @Last Modified time: 2018-11-01 16:27:40
+ * @description E应用适配器
+ */
 module.exports = function (request, responseCallback) {
     var con = {
         method: request.method,
         url: request.url,
         dataType: request.dataType || undefined,
-        header: request.headers,
+        headers: request.headers,
         data: request.body || {},
         success: function success(res) {
             responseCallback({
@@ -773,28 +776,28 @@ module.exports = function (request, responseCallback) {
             });
         }
     };
-    wx.request(con);
+    dd.httpRequest(con);
 };
 
 /***/ }),
+/* 5 */,
+/* 6 */,
+/* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-//微信小程序入口
+//E应用入口
 var Fly = __webpack_require__(2);
 var EngineWrapper = __webpack_require__(1);
-var adapter = __webpack_require__(7);
-var wxEngine = EngineWrapper(adapter);
+var adapter = __webpack_require__(4);
+var eEngine = EngineWrapper(adapter);
 module.exports = function (engine) {
-    return new Fly(engine || wxEngine);
+    return new Fly(engine || eEngine);
 };
 
 /***/ })
